@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard - Server Support CRM</title>
+  <link rel="stylesheet" href="/src/styles/tokens.css">
+  <link rel="stylesheet" href="/src/styles/base.css">
+  <link rel="stylesheet" href="/src/styles/components.css">
+  <link rel="stylesheet" href="/src/styles/pages/client-dashboard.css">
+  <style>
+    .enterprise-brand:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <div class="container">
+        <div class="header-content">
+          <div style="display: flex; flex-direction: column;">
+            <a href="/" class="enterprise-brand" style="text-decoration: none; color: var(--color-primary); margin-bottom: 0.5rem; transition: opacity var(--transition-fast);">
+              <span style="font-size: 1.25rem; font-weight: 600; cursor: pointer;">Enterprise Solutions</span>
+            </a>
+            <h1 id="dashboard-title" style="margin: 0;">Client Dashboard</h1>
+          </div>
+          <div class="header-actions">
+            <div id="language-switcher-container" style="margin-right: 1rem;"></div>
+            <span class="company-name-display" id="company-name-display" style="margin-right: 1rem; font-weight: 600; font-size: 1.1rem; color: var(--color-primary, #007bff);"></span>
+            <span class="user-info" id="user-info"></span>
+            <button id="logout-btn" class="btn btn-secondary btn-sm">Logout</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="container">
+        <div class="dashboard-content">
+          <!-- Ticket Submission Section -->
+          <section class="dashboard-section">
+            <h2 id="ticket-form-section-title">Submit New Ticket</h2>
+            <div id="ticket-form-container">
+              <!-- Ticket form will be loaded here -->
+            </div>
+          </section>
+
+          <!-- Ticket List Section -->
+          <section class="dashboard-section">
+            <h2 id="ticket-list-section-title">My Tickets</h2>
+            <div id="ticket-list-container">
+              <!-- Ticket list will be loaded here -->
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    import { createLanguageSwitcher } from '/src/components/language-switcher.js';
+    import { getCurrentLanguage, t } from '/src/services/i18n.js';
+
+    // Initialize language switcher
+    const switcherContainer = document.getElementById('language-switcher-container');
+    if (switcherContainer) {
+      createLanguageSwitcher(switcherContainer, () => {
+        updatePageLanguage();
+        // Trigger page refresh for components to re-render with new language
+        window.dispatchEvent(new CustomEvent('languagechange'));
+      });
+    }
+
+    // Update page language
+    function updatePageLanguage() {
+      const lang = getCurrentLanguage();
+      document.documentElement.lang = lang;
+
+      // Update text content
+      const titleEl = document.getElementById('dashboard-title');
+      const formTitleEl = document.getElementById('ticket-form-section-title');
+      const listTitleEl = document.getElementById('ticket-list-section-title');
+      const logoutBtn = document.getElementById('logout-btn');
+
+      if (titleEl) titleEl.textContent = t('dashboard.clientTitle');
+      if (formTitleEl) formTitleEl.textContent = t('ticketForm.title');
+      if (listTitleEl) listTitleEl.textContent = t('ticketList.title');
+      if (logoutBtn) logoutBtn.textContent = t('dashboard.logout');
+    }
+
+    // Initial language update
+    updatePageLanguage();
+
+    // Listen for language changes
+    window.addEventListener('languagechange', updatePageLanguage);
+  </script>
+  <script type="module" src="/src/scripts/client-dashboard.js"></script>
+</body>
+</html>
+

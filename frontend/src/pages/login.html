@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Server Support CRM - Login</title>
+  <link rel="stylesheet" href="/src/styles/tokens.css">
+  <link rel="stylesheet" href="/src/styles/base.css">
+  <link rel="stylesheet" href="/src/styles/components.css">
+  <link rel="stylesheet" href="/src/styles/pages/landing.css">
+  <style>
+    .enterprise-brand:hover {
+      opacity: 0.8;
+    }
+    .enterprise-brand h1 {
+      color: var(--color-primary) !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="landing-container">
+    <div class="landing-content">
+      <div class="landing-header">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+          <a href="/" class="enterprise-brand" style="text-decoration: none; color: var(--color-primary); display: block; transition: opacity var(--transition-fast);">
+            <h1 style="margin: 0; cursor: pointer;">Enterprise Solutions</h1>
+          </a>
+          <div id="language-switcher-container"></div>
+        </div>
+        <h2 id="login-title" style="margin: 0.5rem 0;">Server Support CRM</h2>
+        <p id="login-subtitle" class="landing-subtitle">24/7 Incident Management System</p>
+      </div>
+
+      <div class="login-card">
+        <h2 id="sign-in-title">Sign In</h2>
+        <form id="login-form" class="login-form">
+          <div class="form-group">
+            <label for="username" id="username-label" aria-label="Username input">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              required
+              autocomplete="username"
+              placeholder="Enter your username"
+              aria-required="true"
+              aria-describedby="username-error"
+            />
+            <span id="username-error" class="form-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="password" id="password-label" aria-label="Password input">Password</label>
+            <div style="position: relative;">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                autocomplete="current-password"
+                placeholder="Enter your password"
+                aria-required="true"
+                aria-describedby="password-error"
+                style="padding-right: 40px; width: 100%;"
+              />
+              <button
+                type="button"
+                id="password-toggle"
+                aria-label="Toggle password visibility"
+                aria-pressed="false"
+                tabindex="0"
+                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; padding: 5px; display: flex; align-items: center; justify-content: center; touch-action: manipulation;"
+              >
+                <!-- Eye open icon (visible when password is hidden) -->
+                <svg id="eye-open-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: block;">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <!-- Eye closed icon (visible when password is shown) -->
+                <svg id="eye-closed-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </button>
+            </div>
+            <span id="password-error" class="form-error" role="alert" aria-live="polite"></span>
+          </div>
+
+          <div id="login-error" class="error-message" role="alert" style="display: none;"></div>
+
+          <button type="submit" id="login-submit" class="btn btn-primary btn-full" aria-label="Sign in to your account">
+            <span class="btn-text" id="login-btn-text">Sign In</span>
+            <span class="btn-loading" id="login-btn-loading" style="display: none;" aria-live="polite">Signing in...</span>
+          </button>
+
+          <div style="text-align: center; margin-top: 1rem;">
+            <button type="button" id="recovery-button" class="btn btn-link" style="color: var(--color-primary); text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0.5rem;">
+              <span id="recovery-button-text">Forgot Password?</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createLanguageSwitcher } from '/src/components/language-switcher.js';
+    import { getCurrentLanguage, t } from '/src/services/i18n.js';
+
+    // Initialize language switcher
+    const switcherContainer = document.getElementById('language-switcher-container');
+    if (switcherContainer) {
+      createLanguageSwitcher(switcherContainer, () => {
+        updatePageLanguage();
+      });
+    }
+
+    // Update page language
+    function updatePageLanguage() {
+      const lang = getCurrentLanguage();
+      document.documentElement.lang = lang;
+
+      // Update text content
+      const titleEl = document.getElementById('login-title');
+      const subtitleEl = document.getElementById('login-subtitle');
+      const signInTitleEl = document.getElementById('sign-in-title');
+      const usernameLabelEl = document.getElementById('username-label');
+      const passwordLabelEl = document.getElementById('password-label');
+      const usernameInput = document.getElementById('username');
+      const passwordInput = document.getElementById('password');
+      const btnTextEl = document.getElementById('login-btn-text');
+      const btnLoadingEl = document.getElementById('login-btn-loading');
+
+      if (titleEl) titleEl.textContent = t('login.title');
+      if (subtitleEl) subtitleEl.textContent = t('login.subtitle');
+      if (signInTitleEl) signInTitleEl.textContent = t('login.signIn');
+      if (usernameLabelEl) usernameLabelEl.textContent = t('login.username');
+      if (passwordLabelEl) passwordLabelEl.textContent = t('login.password');
+      if (usernameInput) usernameInput.placeholder = t('login.usernamePlaceholder');
+      if (passwordInput) passwordInput.placeholder = t('login.passwordPlaceholder');
+      if (btnTextEl) btnTextEl.textContent = t('login.signIn');
+      if (btnLoadingEl) btnLoadingEl.textContent = t('login.signingIn');
+      
+      const recoveryButtonText = document.getElementById('recovery-button-text');
+      if (recoveryButtonText) recoveryButtonText.textContent = t('login.forgotPassword') || 'Forgot Password?';
+    }
+
+    // Initial language update
+    updatePageLanguage();
+
+    // Listen for language changes
+    window.addEventListener('languagechange', updatePageLanguage);
+  </script>
+  <script type="module" src="/src/scripts/auth.js"></script>
+</body>
+</html>
+
+

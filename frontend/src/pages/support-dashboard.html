@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support Dashboard - Server Support CRM</title>
+  <link rel="stylesheet" href="/src/styles/tokens.css">
+  <link rel="stylesheet" href="/src/styles/base.css">
+  <link rel="stylesheet" href="/src/styles/components.css">
+  <link rel="stylesheet" href="/src/styles/pages/support-dashboard.css">
+  <style>
+    .enterprise-brand:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <div class="container">
+        <div class="header-content">
+          <div style="display: flex; flex-direction: column;">
+            <a href="/" class="enterprise-brand" style="text-decoration: none; color: var(--color-primary); margin-bottom: 0.5rem; transition: opacity var(--transition-fast);">
+              <span style="font-size: 1.25rem; font-weight: 600; cursor: pointer;">Enterprise Solutions</span>
+            </a>
+            <h1 id="dashboard-title" style="margin: 0;">Support Dashboard</h1>
+          </div>
+          <div class="header-actions">
+            <div id="language-switcher-container" style="margin-right: 1rem;"></div>
+            <span class="user-info" id="user-info"></span>
+            <button id="logout-btn" class="btn btn-secondary btn-sm">Logout</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="container">
+        <div class="dashboard-content">
+          <!-- Client Account Generation Section (always visible) -->
+          <section class="dashboard-section">
+            <h2 id="client-generator-section-title">Generate Client Account</h2>
+            <div id="client-generator-container">
+              <!-- Client generator component will be loaded here -->
+            </div>
+          </section>
+
+          <!-- Tab Navigation (Feature 9: Archive Account Management) -->
+          <div id="dashboard-tabs-section" style="margin-top: 2rem;">
+            <div class="dashboard-tabs">
+              <button class="tab-nav tab-nav-active" data-tab="tickets" id="tickets-tab-btn">
+                <span id="tickets-tab-label">Tickets</span>
+              </button>
+              <button class="tab-nav" data-tab="accounts" id="accounts-tab-btn" style="display: none;">
+                <span id="accounts-tab-label">Accounts</span>
+              </button>
+              <div id="companies-tab-btn-container"></div>
+            </div>
+            
+            <!-- Tab Content Panels -->
+            <div class="tab-content-panels">
+              <!-- Tickets Tab Panel -->
+              <div class="tab-panel tab-panel-active" data-panel="tickets">
+                <div class="dashboard-section">
+                  <div id="ticket-management-container">
+                    <!-- Ticket management will be loaded here -->
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Accounts Tab Panel -->
+              <div class="tab-panel" data-panel="accounts">
+                <div class="dashboard-section">
+                  <h2 id="admin-management-section-title">Administrator Management</h2>
+                  <div id="admin-management-container">
+                    <!-- Administrator management will be loaded here -->
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Companies Tab Panel -->
+              <div class="tab-panel" data-panel="companies">
+                <div class="dashboard-section">
+                  <div id="company-management-container">
+                    <!-- Company management will be loaded here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Old layout (deprecated) - hidden for master accounts -->
+          <section id="admin-management-section" class="dashboard-section" style="display: none;">
+            <h2 id="admin-management-section-title-old">Administrator Management</h2>
+            <div id="admin-management-container-old">
+              <!-- Administrator management will be loaded here -->
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    import { createLanguageSwitcher } from '/src/components/language-switcher.js';
+    import { getCurrentLanguage, t } from '/src/services/i18n.js';
+
+    // Initialize language switcher
+    const switcherContainer = document.getElementById('language-switcher-container');
+    if (switcherContainer) {
+      createLanguageSwitcher(switcherContainer, () => {
+        updatePageLanguage();
+        // Trigger page refresh for components to re-render with new language
+        window.dispatchEvent(new CustomEvent('languagechange'));
+      });
+    }
+
+    // Update page language
+    function updatePageLanguage() {
+      const lang = getCurrentLanguage();
+      document.documentElement.lang = lang;
+
+      // Update text content
+      const titleEl = document.getElementById('dashboard-title');
+      const clientGenTitleEl = document.getElementById('client-generator-section-title');
+      const ticketMgmtTitleEl = document.getElementById('ticket-management-section-title');
+      const adminMgmtTitleEl = document.getElementById('admin-management-section-title');
+      const logoutBtn = document.getElementById('logout-btn');
+      const ticketsTabLabel = document.getElementById('tickets-tab-label');
+      const accountsTabLabel = document.getElementById('accounts-tab-label');
+
+      if (titleEl) titleEl.textContent = t('dashboard.supportTitle');
+      if (clientGenTitleEl) clientGenTitleEl.textContent = t('clientGenerator.title');
+      if (ticketMgmtTitleEl) ticketMgmtTitleEl.textContent = t('ticketManagement.title');
+      if (adminMgmtTitleEl) adminMgmtTitleEl.textContent = t('adminManagement.title');
+      if (logoutBtn) logoutBtn.textContent = t('dashboard.logout');
+      if (ticketsTabLabel) ticketsTabLabel.textContent = t('dashboard.ticketsTab');
+      if (accountsTabLabel) accountsTabLabel.textContent = t('dashboard.accountsTab');
+      
+      // Update Companies tab label if it exists
+      const companiesTabLabel = document.getElementById('companies-tab-label');
+      if (companiesTabLabel) companiesTabLabel.textContent = t('dashboard.companiesTab') || 'Companies';
+    }
+
+    // Initial language update
+    updatePageLanguage();
+
+    // Listen for language changes
+    window.addEventListener('languagechange', updatePageLanguage);
+  </script>
+  <script type="module" src="/src/scripts/support-dashboard.js"></script>
+</body>
+</html>
+

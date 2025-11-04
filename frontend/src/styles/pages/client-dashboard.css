@@ -1,0 +1,61 @@
+/* Client Dashboard Styles */
+
+.dashboard-container {
+  min-height: 100vh;
+  background-color: var(--bg-secondary);
+}
+
+.dashboard-header {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--spacing-md) 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-content h1 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  color: var(--text-primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.user-info {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.dashboard-main {
+  padding: var(--spacing-xl) 0;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.dashboard-section {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.dashboard-section h2 {
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-2xl);
+  color: var(--text-primary);
+}
+
