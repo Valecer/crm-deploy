@@ -5,10 +5,10 @@ FROM node:22-alpine
 WORKDIR /app
 
 # Копируем package.json и package-lock.json
-COPY package.json package-lock.json ./
+COPY package*.json ./
 
 # Устанавливаем зависимости
-RUN npm ci --omit=dev
+RUN npm ci --only=production
 
 # Копируем исходный код
 COPY . .
