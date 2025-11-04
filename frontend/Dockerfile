@@ -18,6 +18,9 @@ RUN npm run build
 # Этап продакшена - используем nginx для раздачи статики
 FROM nginx:alpine
 
+# Устанавливаем wget для healthcheck (если его нет)
+RUN apk add --no-cache wget || true
+
 # Копируем собранные файлы из builder
 COPY --from=builder /app/dist /usr/share/nginx/html
 
