@@ -3,11 +3,8 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
-# Копируем package файлы
-COPY package*.json ./
-
-# Устанавливаем зависимости
-RUN npm ci
+COPY package.json package.json
+RUN npm install
 
 # Копируем исходный код
 COPY . .
@@ -22,7 +19,8 @@ FROM nginx:alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Копируем конфигурацию nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/nginx.conf /etc/nginx/conf.d/default.conf
+#COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Открываем порт
 EXPOSE 80
