@@ -4,7 +4,7 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Копируем package файлы
-COPY package*.json ./
+COPY package.json package-lock.json ./
 
 # Устанавливаем зависимости
 RUN npm ci
