@@ -14,6 +14,7 @@ services:
       - NODE_ENV=production
       # Добавьте другие переменные окружения, если нужно
       # - JWT_SECRET=your-secret-key
+<<<<<<< HEAD
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:5174/health || exit 1"]
@@ -21,6 +22,18 @@ services:
       timeout: 10s
       retries: 3
       start_period: 60s
+=======
+    volumes:
+      # Сохраняем базу данных в персистентном томе
+      - backend-data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:5174/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+>>>>>>> e14a84e (two)
 
   frontend:
     build:
@@ -30,6 +43,7 @@ services:
     ports:
       - "80:80"
     depends_on:
+<<<<<<< HEAD
       backend:
         condition: service_healthy
     restart: unless-stopped
@@ -39,4 +53,17 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
+=======
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  backend-data:
+    driver: local
+>>>>>>> e14a84e (two)
 

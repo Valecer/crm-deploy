@@ -1,9 +1,12 @@
 # Используем официальный Node.js образ
 FROM node:18-alpine
 
+<<<<<<< HEAD
 # Устанавливаем wget для healthcheck
 RUN apk add --no-cache wget
 
+=======
+>>>>>>> e14a84e (two)
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
