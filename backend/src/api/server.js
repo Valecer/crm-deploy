@@ -25,7 +25,13 @@ const PORT = process.env.PORT || 5174;
 const DB_PATH = process.env.DB_PATH || join(__dirname, '..', '..', 'database.sqlite');
 
 // Middleware
-app.use(cors());
+// CORS configuration - allow requests from frontend domain
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || '*', // Allow all origins in development, set specific URL in production
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Health check endpoint

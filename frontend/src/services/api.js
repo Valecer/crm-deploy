@@ -5,7 +5,19 @@
 
 import { getAuthToken, clearAuthToken as clearToken, isSessionExpired, refreshSessionTimestamp, clearSession } from './storage.js';
 
-const API_BASE_URL = '/api';
+// Use environment variable for backend URL in production, or relative path for development
+// If VITE_API_BASE_URL is set (full URL like https://valecer-crm-deploy-c126.twc1.net), use it
+// Otherwise, use relative path /api for local development or when proxied through nginx
+const getApiBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_BASE_URL;
+  if (envUrl) {
+    // If full URL provided, ensure it ends with /api
+    return envUrl.endsWith('/api') ? envUrl : `${envUrl}/api`;
+  }
+  return '/api';
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 /**
  * Make an API request
