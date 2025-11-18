@@ -153,3 +153,4 @@ export async function submitContactForm(formData) {
 export async function getUnreadCounts() {
   return get('/notifications/unread-counts');
 }
+

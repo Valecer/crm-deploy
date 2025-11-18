@@ -30,10 +30,18 @@
   font-size: var(--font-size-xl);
   font-weight: 600;
   transition: opacity var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
 .nav-logo:hover {
   opacity: 0.8;
+}
+
+.logo-icon {
+  flex-shrink: 0;
+  display: block;
 }
 
 .logo-text {

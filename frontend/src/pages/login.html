@@ -23,7 +23,21 @@
       <div class="landing-header">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
           <a href="/" class="enterprise-brand" style="text-decoration: none; color: var(--color-primary); display: block; transition: opacity var(--transition-fast);">
-            <h1 style="margin: 0; cursor: pointer;">Enterprise Solutions</h1>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="6" fill="url(#loginLogoGradient)"/>
+                <path d="M12 20L18 14L20 16L16 20L20 24L18 26L12 20Z" fill="white"/>
+                <path d="M28 20L22 14L20 16L24 20L20 24L22 26L28 20Z" fill="white"/>
+                <circle cx="20" cy="20" r="2" fill="white"/>
+                <defs>
+                  <linearGradient id="loginLogoGradient" x1="0" y1="0" x2="40" y2="40">
+                    <stop offset="0%" stop-color="#2563eb"/>
+                    <stop offset="100%" stop-color="#1e40af"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <h1 id="enterprise-brand-text" style="margin: 0; cursor: pointer;">НТЦ Сибирская электроника</h1>
+            </div>
           </a>
           <div id="language-switcher-container"></div>
         </div>
@@ -121,6 +135,7 @@
       document.documentElement.lang = lang;
 
       // Update text content
+      const brandText = document.getElementById('enterprise-brand-text');
       const titleEl = document.getElementById('login-title');
       const subtitleEl = document.getElementById('login-subtitle');
       const signInTitleEl = document.getElementById('sign-in-title');
@@ -131,6 +146,7 @@
       const btnTextEl = document.getElementById('login-btn-text');
       const btnLoadingEl = document.getElementById('login-btn-loading');
 
+      if (brandText) brandText.textContent = t('dashboard.enterpriseBrand');
       if (titleEl) titleEl.textContent = t('login.title');
       if (subtitleEl) subtitleEl.textContent = t('login.subtitle');
       if (signInTitleEl) signInTitleEl.textContent = t('login.signIn');

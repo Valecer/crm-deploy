@@ -28,7 +28,19 @@ export class Navigation {
       <div class="nav-container">
         <div class="nav-brand">
           <a href="/" class="nav-logo" aria-label="Company Logo">
-            <span class="logo-text">Enterprise Solutions</span>
+            <svg class="logo-icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="6" fill="url(#navLogoGradient)"/>
+              <path d="M12 20L18 14L20 16L16 20L20 24L18 26L12 20Z" fill="white"/>
+              <path d="M28 20L22 14L20 16L24 20L20 24L22 26L28 20Z" fill="white"/>
+              <circle cx="20" cy="20" r="2" fill="white"/>
+              <defs>
+                <linearGradient id="navLogoGradient" x1="0" y1="0" x2="40" y2="40">
+                  <stop offset="0%" stop-color="#2563eb"/>
+                  <stop offset="100%" stop-color="#1e40af"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="logo-text">${t('dashboard.enterpriseBrand')}</span>
           </a>
         </div>
         <div class="nav-menu">
@@ -66,6 +78,7 @@ export class Navigation {
       const currentLang = getCurrentLanguage();
       const nextLang = currentLang === 'en' ? 'ru' : 'en';
       setLanguage(nextLang);
+      // Update navigation immediately after language change
       this.update();
     });
 
@@ -101,6 +114,14 @@ export class Navigation {
       this.languageSwitcher.querySelector('.lang-code').textContent = nextLang.toUpperCase();
       this.languageSwitcher.setAttribute('aria-label', `Switch to ${nextLang === 'en' ? 'English' : 'Русский'}`);
       this.languageSwitcher.setAttribute('title', `Switch to ${nextLang === 'en' ? 'English' : 'Русский'}`);
+    }
+    
+    // Update logo text
+    if (this.navElement) {
+      const logoText = this.navElement.querySelector('.logo-text');
+      if (logoText) {
+        logoText.textContent = t('dashboard.enterpriseBrand');
+      }
     }
   }
 

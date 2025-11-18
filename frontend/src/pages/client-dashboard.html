@@ -21,7 +21,21 @@
         <div class="header-content">
           <div style="display: flex; flex-direction: column;">
             <a href="/" class="enterprise-brand" style="text-decoration: none; color: var(--color-primary); margin-bottom: 0.5rem; transition: opacity var(--transition-fast);">
-              <span style="font-size: 1.25rem; font-weight: 600; cursor: pointer;">Enterprise Solutions</span>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="40" height="40" rx="6" fill="url(#clientLogoGradient)"/>
+                  <path d="M12 20L18 14L20 16L16 20L20 24L18 26L12 20Z" fill="white"/>
+                  <path d="M28 20L22 14L20 16L24 20L20 24L22 26L28 20Z" fill="white"/>
+                  <circle cx="20" cy="20" r="2" fill="white"/>
+                  <defs>
+                    <linearGradient id="clientLogoGradient" x1="0" y1="0" x2="40" y2="40">
+                      <stop offset="0%" stop-color="#2563eb"/>
+                      <stop offset="100%" stop-color="#1e40af"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <span id="enterprise-brand-text" style="font-size: 1.25rem; font-weight: 600; cursor: pointer;">НТЦ Сибирская электроника</span>
+              </div>
             </a>
             <h1 id="dashboard-title" style="margin: 0;">Client Dashboard</h1>
           </div>
@@ -82,11 +96,13 @@
       const formTitleEl = document.getElementById('ticket-form-section-title');
       const listTitleEl = document.getElementById('ticket-list-section-title');
       const logoutBtn = document.getElementById('logout-btn');
+      const brandText = document.getElementById('enterprise-brand-text');
 
       if (titleEl) titleEl.textContent = t('dashboard.clientTitle');
       if (formTitleEl) formTitleEl.textContent = t('ticketForm.title');
       if (listTitleEl) listTitleEl.textContent = t('ticketList.title');
       if (logoutBtn) logoutBtn.textContent = t('dashboard.logout');
+      if (brandText) brandText.textContent = t('dashboard.enterpriseBrand');
     }
 
     // Initial language update

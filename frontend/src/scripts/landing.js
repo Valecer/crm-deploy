@@ -12,7 +12,6 @@ import { animationController } from '../services/animation-controller.js';
 import { parallaxController } from '../services/parallax-controller.js';
 import { performanceMonitor } from '../services/performance-monitor.js';
 import { ContentSection } from '../components/content-section.js';
-import { CustomersSection } from '../components/customers-section.js';
 import { PartnersSection } from '../components/partners-section.js';
 import { ContactsSection } from '../components/contacts-section.js';
 import { ContactForm } from '../components/contact-form.js';
@@ -27,8 +26,8 @@ export const landingPageContent = {
   about: {
     id: 'about-company',
     type: 'about',
-    title: 'About Our Company',
-    subtitle: 'Building enterprise and SME server solutions since 2010',
+    title: 'About Company',
+    subtitle: 'Building enterprise and SME server solutions since 2015',
     content: {
       background: 'We are a specialized provider of comprehensive server solutions, dedicated to empowering enterprises and small-to-medium businesses with robust, scalable, and reliable infrastructure. Our expertise spans from custom server deployments and cloud migrations to ongoing maintenance and 24/7 monitoring. With over 15 years of industry experience, we understand the unique challenges that businesses face when building and managing their IT infrastructure, and we deliver tailored solutions that drive efficiency, security, and growth.',
       mission: 'Our mission is to deliver world-class server solutions that enable enterprises and SMEs to achieve their business objectives through reliable, scalable, and cost-effective infrastructure. We combine deep technical expertise with a customer-centric approach, ensuring that every deployment is optimized for performance, security, and long-term success. We believe that every business, regardless of size, deserves enterprise-grade server infrastructure that supports their growth and digital transformation journey.',
@@ -40,7 +39,7 @@ export const landingPageContent = {
         '24/7 Proactive Support',
         'Innovation & Best Practices'
       ],
-      history: 'Founded in 2010, we began as a boutique server solutions provider focused on helping small and medium businesses achieve enterprise-level infrastructure capabilities. Over the years, we\'ve expanded our services to serve Fortune 500 companies while maintaining our commitment to personalized service for SMEs. Today, we manage server infrastructure for over 800 organizations across various industries, handling millions of requests daily and maintaining an industry-leading 99.99% uptime record. Our team of certified engineers and architects brings decades of combined experience in server architecture, cloud platforms, virtualization, and cybersecurity.'
+      history: 'Founded in 2015, we began as a boutique server solutions provider focused on helping small and medium businesses achieve enterprise-level infrastructure capabilities. Over the years, we\'ve expanded our services to serve Fortune 500 companies while maintaining our commitment to personalized service for SMEs. Today, we manage server infrastructure for over 800 organizations across various industries, handling millions of requests daily and maintaining an industry-leading 99.99% uptime record. Our team of certified engineers and architects brings decades of combined experience in server architecture, cloud platforms, virtualization, and cybersecurity.'
     },
     backgroundColor: 'var(--bg-secondary)',
     textColor: 'var(--text-primary)'
@@ -55,14 +54,28 @@ export const landingPageContent = {
         {
           id: 'server-deployment',
           title: 'Custom Server Deployment',
-          description: 'End-to-end server deployment services tailored to your business needs. From initial planning and hardware selection to OS installation and configuration, we ensure your servers are optimized for performance, security, and scalability.',
+          description: 'End-to-end server deployment from needs diagnostics to performance optimization. We ensure your servers are optimized for performance, security, and scalability.',
           icon: '🖥️',
           features: [
-            'Hardware selection & procurement',
+            'Technical task development',
+            'Equipment selection & delivery',
             'OS installation & configuration',
             'Network setup & security hardening',
             'Performance optimization',
             'Documentation & handover'
+          ]
+        },
+        {
+          id: 'ai-infrastructure',
+          title: 'AI Model Infrastructure',
+          description: 'Building and configuring infrastructure for training and deploying machine learning and AI models. Optimizing computational resources for high-load AI tasks.',
+          icon: '🤖',
+          features: [
+            'AI infrastructure design',
+            'GPU cluster setup',
+            'Model training environment',
+            'Scalable deployment solutions',
+            'Performance optimization for AI workloads'
           ]
         },
         {
@@ -97,6 +110,7 @@ export const landingPageContent = {
           description: 'Round-the-clock monitoring and support from our team of certified engineers. Get rapid response times, proactive issue resolution, and expert guidance whenever you need it, day or night.',
           icon: '🛡️',
           features: [
+            'Service package',
             '24/7/365 availability',
             'Average 5-minute response time',
             'Certified engineers on-call',
@@ -119,7 +133,7 @@ export const landingPageContent = {
         },
         {
           id: 'security',
-          title: 'Server Security & Hardening',
+          title: 'Information Security',
           description: 'Protect your critical infrastructure with comprehensive security services. From initial hardening to ongoing threat monitoring, we ensure your servers meet the highest security standards.',
           icon: '🔒',
           features: [
@@ -163,79 +177,148 @@ export const landingPageContent = {
   },
   customers: {
     id: 'customers',
-    type: 'customers',
-    title: 'What Our Customers Say',
-    subtitle: 'Trusted by enterprises and SMEs across industries',
-    format: 'testimonials',
-    items: [
+    type: 'partners',
+    title: 'Наши клиенты',
+    subtitle: 'Организации, которые доверяют нам свои IT-решения',
+    partners: [
       {
-        type: 'testimonial',
-        quote: 'Their server deployment team transformed our infrastructure. We migrated from legacy hardware to a modern virtualized environment with zero downtime. Their expertise in enterprise server solutions is unmatched, and the ongoing support has been exceptional.',
-        author: {
-          name: 'Sarah Chen',
-          role: 'VP of Infrastructure',
-          company: 'TechCorp Enterprises'
-        },
-        logo: '/assets/logos/techcorp.png',
-        rating: 5
+        id: 'customer-medical-college',
+        name: 'Свердловский областной медицинский колледж',
+        logo: '/assets/logos/customers/sverdlovsk-medical-college.jpg',
+        description: 'Образовательное учреждение',
+        website: '',
+        category: 'Образование'
       },
       {
-        type: 'testimonial',
-        quote: 'As a growing SME, we needed enterprise-grade infrastructure without enterprise-sized budgets. They designed a scalable solution that has grown with us from 50 to 500 employees. The 24/7 support gives us peace of mind, and their team truly understands our business needs.',
-        author: {
-          name: 'Michael Rodriguez',
-          role: 'IT Director',
-          company: 'Innovate Solutions Ltd.'
-        },
-        logo: '/assets/logos/innovate.png',
-        rating: 5
+        id: 'customer-volgospas',
+        name: 'ВОЛГОСПАС',
+        logo: '/assets/logos/customers/volgospas.webp',
+        description: 'Астраханская область - Служба спасения',
+        website: '',
+        category: 'Госслужба'
       },
       {
-        type: 'testimonial',
-        quote: 'We\'ve been working with them for three years, and they\'ve never let us down. Their proactive monitoring caught critical issues before they impacted our operations. The cloud migration they orchestrated reduced our infrastructure costs by 40% while improving performance.',
-        author: {
-          name: 'Jennifer Park',
-          role: 'Chief Technology Officer',
-          company: 'Global Dynamics Inc.'
-        },
-        logo: '/assets/logos/global-dynamics.png',
-        rating: 5
+        id: 'customer-kalugainformtech',
+        name: 'КАЛУГАИНФОРМТЕХ',
+        logo: '/assets/logos/customers/kalugainformtech.png',
+        description: 'Информационные технологии',
+        website: '',
+        category: 'IT'
       },
       {
-        type: 'testimonial',
-        quote: 'Their security hardening services helped us pass our SOC 2 audit on the first try. They don\'t just manage servers—they understand compliance requirements and design solutions that meet both technical and regulatory standards. Highly recommended for any enterprise.',
-        author: {
-          name: 'David Thompson',
-          role: 'Head of Security & Compliance',
-          company: 'SecureData Systems'
-        },
-        logo: '/assets/logos/securedata.png',
-        rating: 5
+        id: 'customer-kemgik',
+        name: 'КЕМГИК',
+        logo: '/assets/logos/customers/kemgik.jpg',
+        description: 'Кемеровский государственный институт культуры',
+        website: '',
+        category: 'Образование'
       },
       {
-        type: 'testimonial',
-        quote: 'We\'re a mid-size manufacturer, not a tech company. Their team explained everything in plain language and built a server infrastructure that just works. The disaster recovery plan they put in place saved us during a recent power outage. Couldn\'t be happier.',
-        author: {
-          name: 'Robert Wilson',
-          role: 'Operations Manager',
-          company: 'Advanced Manufacturing Co.'
-        },
-        logo: '/assets/logos/manufacturing.png',
-        rating: 5
+        id: 'customer-chukotenergo',
+        name: 'Чукотэнерго',
+        logo: '/assets/logos/customers/chukotenergo.png',
+        description: 'Энергетическая компания',
+        website: '',
+        category: 'Энергетика'
       },
       {
-        type: 'testimonial',
-        quote: 'From initial consultation to deployment and ongoing management, their service has been outstanding. They helped us scale our server infrastructure to handle 10x growth without breaking the bank. Their engineers are knowledgeable, responsive, and truly care about our success.',
-        author: {
-          name: 'Lisa Anderson',
-          role: 'Founder & CEO',
-          company: 'StartupTech Ventures'
-        },
-        logo: '/assets/logos/startuptech.png',
-        rating: 5
+        id: 'customer-tattelcom',
+        name: 'ТАТТЕЛЕКОМ',
+        logo: '/assets/logos/customers/tattelcom.png',
+        description: 'Телекоммуникационная компания',
+        website: '',
+        category: 'Телеком'
+      },
+      {
+        id: 'customer-bank-chbrr',
+        name: 'БАНК ЧБРР',
+        logo: '/assets/logos/customers/bank-chbrr.jpg',
+        description: 'Банк',
+        website: '',
+        category: 'Финансы'
+      },
+      {
+        id: 'customer-el-telkom',
+        name: 'Эл Телком',
+        logo: '/assets/logos/customers/el-telkom.jpg',
+        description: 'Телекоммуникационная компания',
+        website: '',
+        category: 'Телеком'
+      },
+      {
+        id: 'customer-gcrp',
+        name: 'ГЦРП',
+        logo: '/assets/logos/customers/gcrp.jpeg',
+        description: 'Городской центр развития предпринимательства',
+        website: '',
+        category: 'Бизнес'
+      },
+      {
+        id: 'customer-rosalkogol',
+        name: 'Федеральная служба по контролю за алкогольным и табачным рынками',
+        logo: '/assets/logos/customers/rosalkogol.png',
+        description: 'Федеральная служба',
+        website: '',
+        category: 'Госслужба'
+      },
+      {
+        id: 'customer-rosseti',
+        name: 'РОССЕТИ НОВОСИБИРСК',
+        logo: '/assets/logos/customers/rosseti-novosibirsk.png',
+        description: 'Энергетическая компания',
+        website: '',
+        category: 'Энергетика'
+      },
+      {
+        id: 'customer-social-fund',
+        name: 'Социальный фонд России',
+        logo: '/assets/logos/customers/social-fund-russia.jpg',
+        description: 'Социальный фонд',
+        website: '',
+        category: 'Госслужба'
+      },
+      {
+        id: 'customer-ges',
+        name: 'ГЭС',
+        logo: '/assets/logos/customers/ges.jpg',
+        description: 'Энергия строит',
+        website: '',
+        category: 'Энергетика'
+      },
+      {
+        id: 'customer-kraigaz',
+        name: 'КРАЙГАЗ',
+        logo: '/assets/logos/customers/kraigaz.png',
+        description: 'Красноярск - Газовая компания',
+        website: '',
+        category: 'Энергетика'
+      },
+      {
+        id: 'customer-aprel',
+        name: 'АПРЕЛЬ',
+        logo: '/assets/logos/customers/aprel.png',
+        description: 'Сеть аптек',
+        website: '',
+        category: 'Фармацевтика'
+      },
+      {
+        id: 'customer-yugorsky-holding',
+        name: 'Югорский лесопромышленный холдинг',
+        logo: '/assets/logos/customers/yugorsky-holding.png',
+        description: 'Лесопромышленный холдинг',
+        website: '',
+        category: 'Промышленность'
+      },
+      {
+        id: 'customer-mental-health',
+        name: 'Научный центр психического здоровья',
+        logo: '/assets/logos/customers/mental-health.jpg',
+        description: 'Федеральное государственное бюджетное научное учреждение',
+        website: '',
+        category: 'Здравоохранение'
       }
     ],
-    backgroundColor: 'var(--bg-secondary)',
+    backgroundColor: 'var(--bg-primary)',
     textColor: 'var(--text-primary)'
   },
   partners: {
@@ -245,20 +328,12 @@ export const landingPageContent = {
     subtitle: 'Certified partnerships with industry-leading technology providers',
     partners: [
       {
-        id: 'partner-aws',
-        name: 'Amazon Web Services',
-        logo: '/assets/logos/aws.png',
-        description: 'Advanced Consulting Partner',
-        website: 'https://aws.amazon.com',
-        category: 'Cloud'
-      },
-      {
-        id: 'partner-vmware',
-        name: 'VMware',
-        logo: '/assets/logos/vmware.png',
-        description: 'Cloud Verified Partner',
-        website: 'https://www.vmware.com',
-        category: 'Software'
+        id: 'partner-intel',
+        name: 'Intel',
+        logo: '/assets/logos/intel.png',
+        description: 'Technology Partner - Processors',
+        website: 'https://www.intel.com',
+        category: 'Hardware'
       },
       {
         id: 'partner-amd',
@@ -269,35 +344,11 @@ export const landingPageContent = {
         category: 'Hardware'
       },
       {
-        id: 'partner-microsoft',
-        name: 'Microsoft',
-        logo: '/assets/logos/microsoft.png',
-        description: 'Gold Partner - Cloud & Enterprise Solutions',
-        website: 'https://www.microsoft.com',
-        category: 'Cloud'
-      },
-      {
-        id: 'partner-cisco',
-        name: 'Cisco',
-        logo: '/assets/logos/cisco.png',
-        description: 'Partner - Networking & Security',
-        website: 'https://www.cisco.com',
-        category: 'Networking'
-      },
-      {
         id: 'partner-hp',
-        name: 'HP',
+        name: 'HP Enterprise',
         logo: '/assets/logos/hp.png',
         description: 'Gold Partner - Enterprise Servers',
-        website: 'https://www.hp.com',
-        category: 'Hardware'
-      },
-      {
-        id: 'partner-intel',
-        name: 'Intel',
-        logo: '/assets/logos/intel.png',
-        description: 'Technology Partner - Processors',
-        website: 'https://www.intel.com',
+        website: 'https://www.hpe.com',
         category: 'Hardware'
       },
       {
@@ -315,6 +366,166 @@ export const landingPageContent = {
         description: 'Certified Partner - Enterprise Solutions',
         website: 'https://www.lenovo.com',
         category: 'Hardware'
+      },
+      {
+        id: 'partner-asus',
+        name: 'ASUS',
+        logo: '/assets/logos/asus.svg',
+        description: 'Technology Partner',
+        website: 'https://www.asus.com',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-supermicro',
+        name: 'Supermicro',
+        logo: '/assets/logos/supermicro.svg',
+        description: 'Technology Partner',
+        website: 'https://www.supermicro.com',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-huawei',
+        name: 'Huawei',
+        logo: '/assets/logos/huawei.svg',
+        description: 'Technology Partner',
+        website: 'https://www.huawei.com',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-apex',
+        name: 'Apex',
+        logo: '/assets/logos/apex.svg',
+        description: 'Technology Partner',
+        website: '',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-gooxi',
+        name: 'Gooxi',
+        logo: '/assets/logos/gooxi.svg',
+        description: 'Technology Partner',
+        website: '',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-ricor',
+        name: 'Ricor',
+        logo: '/assets/logos/ricor.svg',
+        description: 'Technology Partner',
+        website: '',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-hepna',
+        name: 'Hepna',
+        logo: '/assets/logos/hepna.svg',
+        description: 'Technology Partner',
+        website: '',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-graviton',
+        name: 'Graviton',
+        logo: '/assets/logos/graviton.svg',
+        description: 'Technology Partner',
+        website: '',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-amagerys',
+        name: 'Amagerys',
+        logo: '/assets/logos/amagerys.svg',
+        description: 'Technology Partner',
+        website: '',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-sir',
+        name: 'SIR',
+        logo: '/assets/logos/sir.svg',
+        description: 'Technology Partner',
+        website: '',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-hynix',
+        name: 'SK Hynix',
+        logo: '/assets/logos/hynix.svg',
+        description: 'Technology Partner - Memory',
+        website: 'https://www.skhynix.com',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-micron',
+        name: 'Micron',
+        logo: '/assets/logos/micron.svg',
+        description: 'Technology Partner - Memory',
+        website: 'https://www.micron.com',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-samsung',
+        name: 'Samsung',
+        logo: '/assets/logos/samsung.svg',
+        description: 'Technology Partner - Memory',
+        website: 'https://www.samsung.com',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-kingston',
+        name: 'Kingston',
+        logo: '/assets/logos/kingston.svg',
+        description: 'Technology Partner - Memory',
+        website: 'https://www.kingston.com',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-toshiba',
+        name: 'Toshiba',
+        logo: '/assets/logos/toshiba.svg',
+        description: 'Technology Partner - Storage',
+        website: 'https://www.toshiba.com',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-nvidia',
+        name: 'NVIDIA',
+        logo: '/assets/logos/nvidia.svg',
+        description: 'Technology Partner - GPUs',
+        website: 'https://www.nvidia.com',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-gigabyte',
+        name: 'Gigabyte',
+        logo: '/assets/logos/gigabyte.svg',
+        description: 'Technology Partner',
+        website: 'https://www.gigabyte.com',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-lsi',
+        name: 'LSI',
+        logo: '/assets/logos/lsi.svg',
+        description: 'Technology Partner',
+        website: '',
+        category: 'Hardware'
+      },
+      {
+        id: 'partner-mellanox',
+        name: 'Mellanox',
+        logo: '/assets/logos/mellanox.svg',
+        description: 'Technology Partner - Networking',
+        website: 'https://www.nvidia.com/en-us/networking/ethernet/',
+        category: 'Networking'
+      },
+      {
+        id: 'partner-broadcom',
+        name: 'Broadcom',
+        logo: '/assets/logos/broadcom.svg',
+        description: 'Technology Partner',
+        website: 'https://www.broadcom.com',
+        category: 'Hardware'
       }
     ],
     backgroundColor: 'var(--bg-primary)',
@@ -327,15 +538,15 @@ export const landingPageContent = {
     subtitle: 'Get in touch with our server solutions team',
     contactInfo: {
       address: {
-        street: '123 Enterprise Street, Suite 500',
-        city: 'Tech City',
-        state: 'TC',
-        zip: '12345',
-        country: 'USA'
+        street: 'ул. Мичурина, д. 15',
+        city: 'Новосибирск',
+        state: '',
+        zip: '630091',
+        country: 'Россия'
       },
-      phone: '+1 (555) 123-4567',
-      email: 'info@serversolutions.com',
-      officeHours: 'Business Hours: Monday - Friday, 9 AM - 6 PM EST | 24/7 Emergency Support Available'
+      phone: '',
+      email: 'info@sib-server.ru',
+      officeHours: 'Понедельник-пятница 6:00 - 18:00 МСК | Круглосуточная экстренная поддержка'
     },
     form: {
       id: 'contact-form',
@@ -343,7 +554,6 @@ export const landingPageContent = {
       fields: {
         name: { required: true, maxLength: 100 },
         email: { required: true, maxLength: 255 },
-        subject: { required: false, maxLength: 200 },
         phone: { required: false, maxLength: 20 },
         message: { required: true, maxLength: 5000 }
       }
@@ -364,8 +574,9 @@ document.addEventListener('DOMContentLoaded', () => {
 function initLandingPage() {
   // Initialize navigation
   const navContainer = document.querySelector('#navigation');
+  let navigation = null;
   if (navContainer) {
-    const navigation = new Navigation();
+    navigation = new Navigation();
     const navElement = navigation.render(navContainer);
 
     // Initialize login button
@@ -403,6 +614,11 @@ function initLandingPage() {
   // Initialize content sections first (before animations)
   initializeContentSections();
 
+  // Store navigation instance for language updates (before setting up listeners)
+  if (navContainer && navigation) {
+    window.navigationInstance = navigation;
+  }
+
   // Initialize sections navigation
   const sectionsNav = new SectionsNavigation({
     sections: [
@@ -420,6 +636,10 @@ function initLandingPage() {
   // Setup language change listener to update content
   window.addEventListener('languagechange', () => {
     updateLanguageContent();
+    // Update navigation logo text
+    if (window.navigationInstance) {
+      window.navigationInstance.update();
+    }
   });
 
   // Initialize scroll animations after sections are created
@@ -514,17 +734,38 @@ function getLandingPageContent() {
             description: services.serverDeployment?.description || t('services.serverDeployment.description'),
             icon: '🖥️',
             features: lang === 'ru' ? [
-              'Подбор и закупка оборудования',
+              'Разработка технического задания',
+              'Подбор и поставка оборудования',
               'Установка и настройка ОС',
               'Настройка сети и безопасность',
               'Оптимизация производительности',
               'Документация и передача'
             ] : [
-              'Hardware selection & procurement',
+              'Technical task development',
+              'Equipment selection & delivery',
               'OS installation & configuration',
               'Network setup & security hardening',
               'Performance optimization',
               'Documentation & handover'
+            ]
+          },
+          {
+            id: 'ai-infrastructure',
+            title: services.aiInfrastructure?.title || t('services.aiInfrastructure.title'),
+            description: services.aiInfrastructure?.description || t('services.aiInfrastructure.description'),
+            icon: '🤖',
+            features: lang === 'ru' ? [
+              'Проектирование AI-инфраструктуры',
+              'Настройка GPU-кластеров',
+              'Среда для обучения моделей',
+              'Масштабируемые решения для развертывания',
+              'Оптимизация производительности для AI-задач'
+            ] : [
+              'AI infrastructure design',
+              'GPU cluster setup',
+              'Model training environment',
+              'Scalable deployment solutions',
+              'Performance optimization for AI workloads'
             ]
           },
           {
@@ -628,12 +869,14 @@ function getLandingPageContent() {
             description: services.support?.description || t('services.support.description'),
             icon: '🛡️',
             features: lang === 'ru' ? [
+              'Сервисный пакет',
               'Доступность 24/7/365',
               'Среднее время отклика 5 минут',
               'Сертифицированные инженеры',
               'Диагностика и решение',
               'Приоритетные эскалации'
             ] : [
+              'Service package',
               '24/7/365 availability',
               'Average 5-minute response time',
               'Certified engineers on-call',
@@ -667,12 +910,11 @@ function getLandingPageContent() {
     },
     customers: {
       id: 'customers',
-      type: 'customers',
+      type: 'partners',
       title: customers.title || t('customers.title'),
       subtitle: customers.subtitle || t('customers.subtitle'),
-      format: 'testimonials',
-      items: landingPageContent.customers.items, // Keep testimonials as-is for now
-      backgroundColor: 'var(--bg-secondary)',
+      partners: landingPageContent.customers.partners,
+      backgroundColor: 'var(--bg-primary)',
       textColor: 'var(--text-primary)'
     },
     partners: {
@@ -748,13 +990,23 @@ function initializeContentSections() {
   // Initialize Customers section
   let customersSection = document.querySelector('#customers');
   if (content.customers) {
-    const customers = new CustomersSection(content.customers);
-    customers.create();
-    if (customers.sectionElement) {
-      if (customersSection) {
+    const customers = new PartnersSection(content.customers);
+    if (customersSection) {
+      // Replace existing section with new one using render method
+      customers.create();
+      if (customers.sectionElement) {
         customersSection.replaceWith(customers.sectionElement);
-      } else {
-        mainContent.appendChild(customers.sectionElement);
+        // Initialize carousel after a short delay
+        setTimeout(() => {
+          customers.initCarousel();
+        }, 100);
+        customers.sectionElement._partnersSection = customers;
+      }
+    } else {
+      // Use render method which handles carousel initialization
+      customers.render(mainContent);
+      if (customers.sectionElement) {
+        customers.sectionElement._partnersSection = customers;
       }
     }
   }

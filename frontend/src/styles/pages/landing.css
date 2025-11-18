@@ -1,10 +1,10 @@
-/* Enhanced Animations */
-@import '../animations/enhanced-animations.css';
-
 /* Tailwind CSS Directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Enhanced Animations */
+@import '../animations/enhanced-animations.css';
 
 /* Landing Page Styles */
 
@@ -308,22 +308,22 @@ body {
   color: var(--text-primary);
 }
 
-/* Services Section - Bento Grid Style */
-.services-bento-grid {
+/* Services Section - Uniform Grid Style */
+.services-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: var(--bento-gap-lg);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
   margin-top: var(--spacing-xl);
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.service-bento-card {
+.service-card {
   background-color: var(--bg-primary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 1rem;
+  padding: var(--spacing-xl);
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-base), 
               box-shadow var(--transition-base),
@@ -332,22 +332,23 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
 }
 
-.service-bento-card:hover {
+.service-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
   border-color: var(--color-primary);
 }
 
-.service-bento-content {
+.service-card-content {
   display: flex;
   flex-direction: column;
   height: 100%;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-md);
 }
 
-.service-bento-icon {
+.service-card-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -356,26 +357,25 @@ body {
   background-color: var(--bg-secondary);
   border-radius: var(--radius-md);
   padding: var(--spacing-sm);
-  margin-bottom: var(--spacing-xs);
   opacity: 0.9;
   transition: all var(--transition-fast);
   animation: iconPulse 3s ease-in-out infinite;
 }
 
-.service-bento-icon svg {
+.service-card-icon svg {
   width: 100%;
   height: 100%;
   transition: transform var(--transition-fast);
 }
 
-.service-bento-card:hover .service-bento-icon {
+.service-card:hover .service-card-icon {
   opacity: 1;
   transform: scale(1.05);
   background-color: rgba(37, 99, 235, 0.1);
   animation-play-state: paused;
 }
 
-.service-bento-card:hover .service-bento-icon svg {
+.service-card:hover .service-card-icon svg {
   transform: scale(1.1);
   animation-play-state: paused;
 }
@@ -387,17 +387,19 @@ body {
 .service-icon-support svg,
 .service-icon-security svg,
 .service-icon-backup-disaster svg,
-.service-icon-consulting svg {
+.service-icon-consulting svg,
+.service-icon-ai-infrastructure svg {
   animation: none !important;
 }
 
-.service-bento-card:hover .service-icon-server-deployment svg,
-.service-bento-card:hover .service-icon-cloud-migration svg,
-.service-bento-card:hover .service-icon-infrastructure-management svg,
-.service-bento-card:hover .service-icon-support svg,
-.service-bento-card:hover .service-icon-security svg,
-.service-bento-card:hover .service-icon-backup-disaster svg,
-.service-bento-card:hover .service-icon-consulting svg {
+.service-card:hover .service-icon-server-deployment svg,
+.service-card:hover .service-icon-cloud-migration svg,
+.service-card:hover .service-icon-infrastructure-management svg,
+.service-card:hover .service-icon-support svg,
+.service-card:hover .service-icon-security svg,
+.service-card:hover .service-icon-backup-disaster svg,
+.service-card:hover .service-icon-consulting svg,
+.service-card:hover .service-icon-ai-infrastructure svg {
   transform: scale(1.1) !important;
 }
 
@@ -406,7 +408,7 @@ body {
   animation: iconRotate 8s linear infinite;
 }
 
-.service-bento-card:hover .service-icon-virtualization svg {
+.service-card:hover .service-icon-virtualization svg {
   transform: scale(1.1) rotate(360deg);
   animation-duration: 0.5s;
 }
@@ -681,7 +683,132 @@ body {
   animation: chartBarFill4 1.5s ease-out 0.8s forwards;
 }
 
-.service-bento-title {
+/* 9. AI Infrastructure - Neural Network Pattern */
+@keyframes aiNodeAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes aiNodePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes aiConnectionDraw {
+  0% {
+    stroke-dashoffset: 20;
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.6;
+  }
+}
+
+/* Input layer nodes appear first */
+.service-icon-ai-infrastructure .ai-node-input-1 {
+  animation: aiNodeAppear 0.5s ease-out 0.1s forwards;
+}
+
+.service-icon-ai-infrastructure .ai-node-input-2 {
+  animation: aiNodeAppear 0.5s ease-out 0.2s forwards;
+}
+
+/* Connections from input layer */
+.service-icon-ai-infrastructure .ai-conn-1 {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: aiConnectionDraw 0.6s ease-out 0.4s forwards;
+}
+
+.service-icon-ai-infrastructure .ai-conn-2 {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: aiConnectionDraw 0.6s ease-out 0.5s forwards;
+}
+
+.service-icon-ai-infrastructure .ai-conn-3 {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: aiConnectionDraw 0.6s ease-out 0.5s forwards;
+}
+
+.service-icon-ai-infrastructure .ai-conn-4 {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: aiConnectionDraw 0.6s ease-out 0.6s forwards;
+}
+
+/* Hidden layer nodes appear */
+.service-icon-ai-infrastructure .ai-node-hidden-1 {
+  animation: aiNodeAppear 0.5s ease-out 0.7s forwards;
+}
+
+.service-icon-ai-infrastructure .ai-node-hidden-2 {
+  animation: aiNodeAppear 0.5s ease-out 0.8s forwards;
+}
+
+.service-icon-ai-infrastructure .ai-node-hidden-3 {
+  animation: aiNodeAppear 0.5s ease-out 0.8s forwards;
+}
+
+.service-icon-ai-infrastructure .ai-node-hidden-4 {
+  animation: aiNodeAppear 0.5s ease-out 0.9s forwards;
+}
+
+/* Connections from hidden layer */
+.service-icon-ai-infrastructure .ai-conn-5 {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: aiConnectionDraw 0.6s ease-out 1s forwards;
+}
+
+.service-icon-ai-infrastructure .ai-conn-6 {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: aiConnectionDraw 0.6s ease-out 1.1s forwards;
+}
+
+.service-icon-ai-infrastructure .ai-conn-7 {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: aiConnectionDraw 0.6s ease-out 1.1s forwards;
+}
+
+.service-icon-ai-infrastructure .ai-conn-8 {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: aiConnectionDraw 0.6s ease-out 1.2s forwards;
+}
+
+/* Output layer nodes appear last */
+.service-icon-ai-infrastructure .ai-node-output-1 {
+  animation: aiNodeAppear 0.5s ease-out 1.3s forwards, aiNodePulse 2s ease-in-out 1.8s infinite;
+}
+
+.service-icon-ai-infrastructure .ai-node-output-2 {
+  animation: aiNodeAppear 0.5s ease-out 1.4s forwards, aiNodePulse 2s ease-in-out 1.9s infinite;
+}
+
+.service-card-title {
   font-size: var(--font-size-lg);
   font-weight: 600;
   color: var(--text-primary);
@@ -689,33 +816,34 @@ body {
   line-height: 1.3;
 }
 
-.service-bento-description {
+.service-card-description {
   font-size: var(--font-size-sm);
   color: var(--text-secondary);
   line-height: 1.5;
-  margin: 0 0 var(--spacing-xs) 0;
+  margin: 0;
   flex: 0 0 auto;
 }
 
-.service-bento-features {
+.service-card-features {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.125rem;
+  gap: var(--spacing-xs);
+  flex: 1 1 auto;
 }
 
-.service-bento-features li {
-  padding: 0.125rem 0;
+.service-card-features li {
+  padding: var(--spacing-xs) 0;
   padding-left: var(--spacing-md);
   position: relative;
   color: var(--text-primary);
-  font-size: var(--font-size-xs);
-  line-height: 1.4;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
 }
 
-.service-bento-features li::before {
+.service-card-features li::before {
   content: '✓';
   position: absolute;
   left: 0;
@@ -723,33 +851,9 @@ body {
   font-weight: bold;
 }
 
-/* Bento Card Sizes */
-.service-bento-small {
-  grid-column: span 4;
-}
-
-.service-bento-medium {
-  grid-column: span 4;
-}
-
-.service-bento-large {
-  grid-column: span 6;
-  grid-row: span 2;
-}
-
-.service-bento-xlarge {
-  grid-column: span 8;
-}
-
-.row-span-2 {
-  grid-row: span 2;
-}
-
-/* Customers Section - Hidden */
-.content-section-customers,
-#customers {
-  display: none !important;
-  visibility: hidden !important;
+/* Customers Section */
+.content-section-customers {
+  /* Customers section now uses partners section styling */
 }
 
 /* Customers Section */
@@ -954,6 +1058,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: var(--spacing-sm);
   text-decoration: none;
   color: inherit;
@@ -961,6 +1066,7 @@ body {
   padding: var(--spacing-md);
   border-radius: var(--radius-md);
   background: transparent;
+  min-height: 150px;
 }
 
 .partner-carousel-item:hover {
@@ -971,14 +1077,16 @@ body {
 .partner-logo {
   max-width: 250px;
   max-height: 120px;
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 80px;
   object-fit: contain;
   filter: none;
   opacity: 1;
   transition: transform var(--transition-base), opacity var(--transition-base);
   background: transparent;
   mix-blend-mode: normal;
+  display: block;
+  margin: 0 auto;
 }
 
 .partner-carousel-item:hover .partner-logo {
@@ -1248,23 +1356,9 @@ body {
     font-size: var(--font-size-2xl);
   }
 
-  .services-bento-grid {
-    grid-template-columns: repeat(8, 1fr);
-    gap: var(--bento-gap-md);
-  }
-
-  .service-bento-small,
-  .service-bento-medium {
-    grid-column: span 4;
-  }
-
-  .service-bento-large {
-    grid-column: span 4;
-    grid-row: span 1;
-  }
-
-  .service-bento-xlarge {
-    grid-column: span 8;
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
   }
 
   .values-list {
@@ -1283,20 +1377,10 @@ body {
     grid-column: span 1 !important;
   }
 
-  .services-bento-grid {
+  .services-grid {
     grid-template-columns: 1fr;
-    gap: var(--bento-gap-sm);
+    gap: var(--spacing-lg);
     padding: 0 var(--spacing-md);
-  }
-
-  .service-bento-card,
-  .service-bento-small,
-  .service-bento-medium,
-  .service-bento-large,
-  .service-bento-xlarge {
-    grid-column: span 1 !important;
-    grid-row: span 1 !important;
-    min-height: auto;
   }
 
   .testimonials-grid {

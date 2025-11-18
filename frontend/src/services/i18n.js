@@ -79,6 +79,10 @@ const translations = {
       consulting: {
         title: 'Server Architecture Consulting',
         description: 'Strategic guidance for designing, optimizing, and scaling server infrastructure.'
+      },
+      aiInfrastructure: {
+        title: 'AI Model Infrastructure',
+        description: 'Building and configuring infrastructure for training and deploying machine learning and AI models. Optimizing computational resources for high-load AI tasks.'
       }
     },
     // Customers
@@ -150,7 +154,7 @@ const translations = {
       loggedInAs: 'Logged in as:',
       company: 'Company:',
       logout: 'Logout',
-      enterpriseBrand: 'Enterprise Solutions',
+      enterpriseBrand: 'Siberian Electronics Technology Center',
       ticketsTab: 'Tickets',
       accountsTab: 'Accounts',
       companiesTab: 'Companies'
@@ -534,9 +538,9 @@ const translations = {
     },
     // About
     about: {
-      title: 'О нашей компании',
-      subtitle: 'Создаем серверные решения для предприятий и малого бизнеса с 2010 года',
-      background: 'Мы специализируемся на комплексных серверных решениях для предприятий и малого бизнеса. Наш опыт охватывает развертывание серверов, миграцию в облако и постоянное обслуживание с круглосуточным мониторингом.',
+      title: 'О компании',
+      subtitle: 'Создаем серверные решения под любые задачи с 2015 года',
+      background: 'Мы специализируемся на комплексных серверных решениях для предприятий разного масштаба от малого бизнеса до корпораций и ЦОДов. Наш опыт охватывает развертывание серверов, миграцию в облако, создание кластеров, построение базы для моделей с искусственным интеллектом и постоянное обслуживание с круглосуточным мониторингом.',
       mission: 'Наша миссия — предоставлять серверные решения мирового класса, которые помогают предприятиям достигать бизнес-целей через надежную, масштабируемую и экономически эффективную инфраструктуру.',
       missionTitle: 'Наша миссия',
       valuesTitle: 'Наши ценности',
@@ -554,10 +558,10 @@ const translations = {
     // Services
     services: {
       title: 'Наши услуги',
-      subtitle: 'Комплексные серверные решения для предприятий и малого бизнеса',
+      subtitle: '',
       serverDeployment: {
         title: 'Развертывание серверов',
-        description: 'Полный цикл от планирования до настройки, оптимизировано для производительности и безопасности.'
+        description: 'Полный цикл от диагностики потребности до оптимизации производительности.'
       },
       cloudMigration: {
         title: 'Миграция в облако',
@@ -571,12 +575,16 @@ const translations = {
         title: 'Техподдержка 24/7',
         description: 'Круглосуточный мониторинг и поддержка от сертифицированных инженеров.'
       },
+      aiInfrastructure: {
+        title: 'Построение базы для моделей с искусственным интеллектом',
+        description: 'Создание и настройка инфраструктуры для обучения и развертывания моделей машинного обучения и искусственного интеллекта. Оптимизация вычислительных ресурсов для высоконагруженных AI-задач.'
+      },
       virtualization: {
         title: 'Виртуализация серверов',
         description: 'Максимизация ресурсов через виртуализацию, снижение затрат и повышение эффективности.'
       },
       security: {
-        title: 'Безопасность серверов',
+        title: 'Информационная безопасность',
         description: 'Комплексные услуги безопасности для защиты критической инфраструктуры.'
       },
       backupDisaster: {
@@ -590,7 +598,7 @@ const translations = {
     },
     // Customers
     customers: {
-      title: 'Отзывы наших клиентов',
+      title: 'Наши клиенты',
       subtitle: 'Нам доверяют предприятия и малый бизнес в различных отраслях'
     },
     // Partners
@@ -602,7 +610,7 @@ const translations = {
     contacts: {
       title: 'Связаться с нами',
       subtitle: 'Свяжитесь с нашей командой по серверным решениям',
-      officeHours: 'Рабочее время: Понедельник - Пятница, 9:00 - 18:00 МСК | Круглосуточная экстренная поддержка',
+      officeHours: 'Понедельник-пятница 6:00 - 18:00 МСК | Круглосуточная экстренная поддержка',
       labels: {
         address: 'Адрес',
         phone: 'Телефон',
@@ -630,7 +638,7 @@ const translations = {
     },
     // Footer
     footer: {
-      copyright: '© 2025 Enterprise Server Solutions. Все права защищены.'
+      copyright: '© 2025 НТЦ Сибирская электроника. Все права защищены.'
     },
     // Login & Auth
     login: {
@@ -657,7 +665,7 @@ const translations = {
       loggedInAs: 'Вход выполнен как:',
       company: 'Компания:',
       logout: 'Выйти',
-      enterpriseBrand: 'Enterprise Solutions',
+      enterpriseBrand: 'НТЦ Сибирская электроника',
       ticketsTab: 'Заявки',
       accountsTab: 'Аккаунты',
       companiesTab: 'Компании'

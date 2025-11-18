@@ -102,6 +102,31 @@ export function createIcon(iconName, primaryColor = null, secondaryColor = null,
     </svg>`;
   }
   
+  if (serviceId === 'ai-infrastructure') {
+    return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Neural Network Connections -->
+      <line class="ai-connection ai-conn-1" x1="6" y1="6" x2="10" y2="10" stroke="${primary}" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
+      <line class="ai-connection ai-conn-2" x1="6" y1="6" x2="12" y2="8" stroke="${primary}" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
+      <line class="ai-connection ai-conn-3" x1="6" y1="18" x2="10" y2="14" stroke="${primary}" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
+      <line class="ai-connection ai-conn-4" x1="6" y1="18" x2="12" y2="16" stroke="${primary}" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
+      <line class="ai-connection ai-conn-5" x1="10" y1="10" x2="18" y2="8" stroke="${primary}" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
+      <line class="ai-connection ai-conn-6" x1="10" y1="14" x2="18" y2="16" stroke="${primary}" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
+      <line class="ai-connection ai-conn-7" x1="12" y1="8" x2="18" y2="8" stroke="${primary}" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
+      <line class="ai-connection ai-conn-8" x1="12" y1="16" x2="18" y2="16" stroke="${primary}" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
+      <!-- Input Layer Nodes -->
+      <circle class="ai-node ai-node-input-1" cx="6" cy="6" r="2" fill="${primary}" opacity="0"/>
+      <circle class="ai-node ai-node-input-2" cx="6" cy="18" r="2" fill="${primary}" opacity="0"/>
+      <!-- Hidden Layer Nodes -->
+      <circle class="ai-node ai-node-hidden-1" cx="10" cy="10" r="2" fill="${primary}" opacity="0"/>
+      <circle class="ai-node ai-node-hidden-2" cx="10" cy="14" r="2" fill="${primary}" opacity="0"/>
+      <circle class="ai-node ai-node-hidden-3" cx="12" cy="8" r="2" fill="${primary}" opacity="0"/>
+      <circle class="ai-node ai-node-hidden-4" cx="12" cy="16" r="2" fill="${primary}" opacity="0"/>
+      <!-- Output Layer Nodes -->
+      <circle class="ai-node ai-node-output-1" cx="18" cy="8" r="2.5" fill="${secondary}" opacity="0"/>
+      <circle class="ai-node ai-node-output-2" cx="18" cy="16" r="2.5" fill="${secondary}" opacity="0"/>
+    </svg>`;
+  }
+  
   // Default icons for other services
   const icons = {
     'pencil': `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

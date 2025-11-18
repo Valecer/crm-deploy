@@ -100,7 +100,7 @@ export class ContentSection {
   }
 
   /**
-   * Create Services section content with bento-style layout
+   * Create Services section content with uniform grid layout
    */
   _createServicesContent() {
     const services = this.content?.services || this.content;
@@ -108,51 +108,30 @@ export class ContentSection {
       return '<div class="content-section-body"></div>';
     }
 
-    let html = '<div class="content-section-body services-bento-grid">';
+    let html = '<div class="content-section-body services-grid">';
     
-    services.forEach((service, index) => {
-      // Create varied card sizes for bento effect
-      // Architecture Consulting, Server Virtualization, and 24/7 Technical Support in same row (each spans 4 columns)
-      let sizeClass = 'service-bento-small'; // default: spans 4 columns
-      let rowSpan = '';
-      
-      // Put consulting, virtualization, and support in the same row (each spans 4 columns = 12 total)
-      if (service.id === 'consulting' || service.id === 'virtualization' || service.id === 'support') {
-        sizeClass = 'service-bento-small'; // spans 4 columns each
-      } else if (service.id === 'infrastructure-management') {
-        sizeClass = 'service-bento-small'; // spans 4 columns
-      } else if (index % 6 === 0 || index % 6 === 4) {
-        sizeClass = 'service-bento-small'; // spans 4 columns
-      } else if (index % 6 === 1 || index % 6 === 3) {
-        sizeClass = 'service-bento-medium'; // spans 4 columns
-      } else if (index % 6 === 2) {
-        sizeClass = 'service-bento-large'; // spans 6 columns (wider)
-        rowSpan = 'row-span-2'; // spans 2 rows
-      } else if (index % 6 === 5) {
-        sizeClass = 'service-bento-xlarge'; // spans 8 columns (wider)
-      }
-
-      html += `<div class="service-bento-card ${sizeClass} ${rowSpan}">`;
-      html += '<div class="service-bento-content">';
+    services.forEach((service) => {
+      html += `<div class="service-card">`;
+      html += '<div class="service-card-content">';
       
       if (service.icon) {
         // Use SVG icons - convert emoji to icon name if needed
         // Add service-specific class for custom animations
         const iconClass = `service-icon-${service.id}`;
-        html += `<div class="service-bento-icon ${iconClass}">${this._createIconSVG(service.icon, service.id)}</div>`;
+        html += `<div class="service-card-icon ${iconClass}">${this._createIconSVG(service.icon, service.id)}</div>`;
       }
       
       if (service.title) {
-        html += `<h3 class="service-bento-title">${this._escapeHtml(service.title)}</h3>`;
+        html += `<h3 class="service-card-title">${this._escapeHtml(service.title)}</h3>`;
       }
       
       if (service.description) {
-        html += `<p class="service-bento-description">${this._escapeHtml(service.description)}</p>`;
+        html += `<p class="service-card-description">${this._escapeHtml(service.description)}</p>`;
       }
       
       if (service.features && Array.isArray(service.features)) {
-        html += '<ul class="service-bento-features">';
-        service.features.slice(0, sizeClass.includes('large') ? 6 : 3).forEach(feature => {
+        html += '<ul class="service-card-features">';
+        service.features.forEach(feature => {
           html += `<li>${this._escapeHtml(feature)}</li>`;
         });
         html += '</ul>';
